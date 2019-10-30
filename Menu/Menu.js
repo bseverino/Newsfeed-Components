@@ -39,8 +39,16 @@ heading.appendChild(createMenu(menuItems));
 const menuDiv = document.querySelector('.menu');
 const menuButton = document.querySelector('.menu-button');
 
+// window.addEventListener('load', () => {
+//   TweenMax.to(menuDiv, 1, {x: 350});
+// });
 menuButton.addEventListener('click', () => {
   menuDiv.classList.toggle('menu--open');
+  if (menuDiv.classList.contains('menu--open')){
+    TweenMax.to(menuDiv, 1, {x: 350});
+  } else {
+    TweenMax.to(menuDiv, 1, {x: 0});
+  };
 });
 
 function createMenu(array){
