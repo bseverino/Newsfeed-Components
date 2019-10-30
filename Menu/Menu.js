@@ -45,9 +45,9 @@ const menuButton = document.querySelector('.menu-button');
 menuButton.addEventListener('click', () => {
   menuDiv.classList.toggle('menu--open');
   if (menuDiv.classList.contains('menu--open')){
-    TweenMax.to(menuDiv, 1, {x: 350});
+    TweenMax.to(menuDiv, 1, {x: 350, ease:Cubic.easeOut});
   } else {
-    TweenMax.to(menuDiv, 1, {x: 0});
+    TweenMax.to(menuDiv, 1, {x: 0, ease:Cubic.easeOut});
   };
 });
 

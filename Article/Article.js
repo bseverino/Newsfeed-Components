@@ -123,7 +123,6 @@ const data = [
 */
 
 const articles = document.querySelector('.articles');
-console.log(articles);
 
 data.forEach(item => {
   articles.appendChild(createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph));
@@ -137,6 +136,7 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   const secondPara = document.createElement('p');
   const thirdPara = document.createElement('p');
   const btn = document.createElement('span');
+  const btnClear = document.createElement('span');
 
   article.appendChild(articleTitle);
   article.appendChild(articleDate);
@@ -144,20 +144,34 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(secondPara);
   article.appendChild(thirdPara);
   article.appendChild(btn);
+  article.appendChild(btnClear);
 
   article.classList.add('article');
   articleDate.classList.add('date');
   btn.classList.add('expandButton');
+  btnClear.classList.add('clear');
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
   firstPara.textContent = firstParagraph;
   secondPara.textContent = secondParagraph;
   thirdPara.textContent = thirdParagraph;
-  btn.textContent = 'Read More';
+  btn.textContent = 'Click to Expand';
+  btnClear.textContent = 'Mark as Read';
 
   btn.addEventListener('click', () => {
     article.classList.toggle('article-open');
+    if (article.classList.contains('article-open')){
+      TweenMax.fromTo(article, 1, {css:{height:50}}, {css:{height:400}, ease:Cubic.easeOut});
+      btn.textContent = 'Click to Close';
+    } else {
+      TweenMax.fromTo(article, 1, {css:{height:400}}, {css:{height:50}, ease:Cubic.easeOut});
+      btn.textContent = 'Click to Expand';
+    }
+  });
+
+  btnClear.addEventListener('click', () => {
+    article.style.display = 'none';
   });
 
   return article;

@@ -73,8 +73,15 @@
   transform: translate(-50%);
   background-color: white;
 }
-.article-open {
-  height: 400px;
+.clear {
+  color: red;
+  position: absolute;
+  top: 20px;
+  right: 5%;
+  cursor: pointer;
+  font-size: 12px;
+  transform: translate(-50%);
+  background-color: white;
 }
 .menu-button {
   position: absolute;
