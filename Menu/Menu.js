@@ -34,7 +34,14 @@ let menuItems = [
   
 */
 const heading = document.querySelector('.header');
-heading.prepend(createMenu(menuItems));
+heading.appendChild(createMenu(menuItems));
+
+const menuDiv = document.querySelector('.menu');
+const menuButton = document.querySelector('.menu-button');
+
+menuButton.addEventListener('click', () => {
+  menuDiv.classList.toggle('menu--open');
+});
 
 function createMenu(array){
   const menu = document.createElement('div');
@@ -48,15 +55,5 @@ function createMenu(array){
 
   menu.classList.add('menu');
   
-  const menuButton = document.querySelector('.menu-button');
-  menuButton.addEventListener('click', () => {
-    menu.classList.toggle('menu--open');
-  });
-  
   return menu;
 };
-
-
-
-
-
